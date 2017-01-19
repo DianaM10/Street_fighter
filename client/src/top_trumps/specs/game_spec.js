@@ -1,6 +1,6 @@
 var assert = require("assert");
-var Game = require("../game");
-var Deck = require("../deck");
+var Game = require("../game")
+var Deck = require("../deck").default
 var Player = require('../player');
 
 var game;

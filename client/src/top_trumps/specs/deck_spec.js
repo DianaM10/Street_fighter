@@ -1,4 +1,4 @@
-var Deck = require("../deck.js");
+var Deck = require("../deck.js").default
 var assert = require("assert");
 
 describe("Deck", function(cards){
