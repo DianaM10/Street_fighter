@@ -24,7 +24,7 @@ Game.prototype = {
     this.currentPlayer = this.players[0];
     var cardCount = 0;
     while (cardCount < this.handSize) {
-      for (player of this.players) {
+      for (var player of this.players) {
         player.addCard(this.deck.cards.shift());
       }
       cardCount++;

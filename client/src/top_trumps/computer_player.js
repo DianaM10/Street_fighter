@@ -18,7 +18,7 @@ ComputerPlayer.prototype = {
      var abilities = this.hand[0].abilities
      var highestAbility = ""
      var highestValue = 0
-     for (ability in abilities) {
+     for (var ability in abilities) {
       if (abilities[ability] > highestValue) {
         highestValue = abilities[ability]
         highestAbility = ability

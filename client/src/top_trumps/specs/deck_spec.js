@@ -1,11 +1,14 @@
-var Deck = require("../deck.js").default
-var assert = require("assert");
+import Deck from '../deck.js'
+import assert from 'assert'
 
 describe("Deck", function(cards){
-     it("start with 2 cards", function(){
-          var cards = [{name: "fighter1", strength: 15}, {name: "fighter2", strength: 10}];
-          var deck = new Deck(cards);
-          assert.equal(2, deck.cards.length);
-     });
+  it("start with 2 cards", function(){
+      const cards = [
+        {name: "fighter1", strength: 15},
+        {name: "fighter2", strength: 10}
+      ]
+      const deck = new Deck(cards)
+      assert.equal(2, deck.cards.length)
+  })
     
 })
