@@ -1,6 +1,7 @@
 var ComputerPlayer = function(){
-  this.name = "CP";
+  this.name = "CP"
   this.hand =[]
+  this.chosenAbility = ""
 }
 
 ComputerPlayer.prototype = {
@@ -13,6 +14,18 @@ ComputerPlayer.prototype = {
   removeCard: function() {
     return this.hand.shift();
   },
+  selectHighestAbility: function() {
+     var abilities = this.hand[0].abilities
+     var highestAbility = ""
+     var highestValue = 0
+     for (ability in abilities) {
+      if (abilities[ability] > highestValue) {
+        highestValue = abilities[ability]
+        highestAbility = ability
+      }
+     }
+     this.chosenAbility = highestAbility
+  }
 }
 
 module.exports = ComputerPlayer;
