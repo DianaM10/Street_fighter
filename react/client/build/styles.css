@@ -52,11 +52,6 @@ body {
      font-size:2em;
 }
 
-#splash form {
-     display: flex;
-     flex-direction: column;
-}
-
 #splash input {
      color:white;
      border:none;
@@ -88,13 +83,24 @@ body {
      font-size:1.5em;
 }
 
+.log-form {
+     display: flex;
+     flex-direction: column;
+}
+
 #player_details {
      display: none;
 }
 
-#start_menu {
+#start-menu {
      display: flex;
-     flex-direction: column;
+     flex-direction: row;
+     justify-content: space-around;
+     align-items: stretch;
+}
+
+.options-menu button {
+     margin-right: 1rem;
 }
 
 

@@ -1,50 +1,33 @@
 import React from 'react'
 import SignInContainer from './SignInContainer'
 import SignUpContainer from './SignUpContainer'
+import MenuOptionsComponent from '../components/MenuOptionsComponent'
 
 class LoginContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: null
+      selectedOption: null
     }
-    this.setUser = this.setUser.bind(this)
+    this.setOption = this.setOption.bind(this)
   }
 
-  setUser(user) {
+  setOption(option) {
     this.setState({
-      currentUser: user
+      selectedOption: option
     })
   }
 
-  getUser() {
-    const url = this.props.url + 'users.json'
-    const request = new XMLHttpRequest()
-    request.open('GET', url)
-    request.setRequestHeader('Content-Type', 'application/json')
-    request.withCredentials = true
-    request.onload = () => {
-      if(request.status === 200) {
-        const user = JSON.parse(request.responseText)
-        this.setUser(user)
-      } else if (request.status === 401) {
-        this.setUser(null)
-      }
-    }
-    request.send(null)
-  }
-
-  componentDidMount() {
-    this.getUser()
-  }
-
   render() {
-    return (this.state.currentUser) ?
-      (<div id="start-menu"></div>) :
-      (<div id="start-menu">
-        <SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.setUser}/>
-        <SignUpContainer url={this.props.url + 'users.json'} onSignUp={this.setUser} />
-      </div>)
+    let content
+    if (this.state.selectedOption === "signUp") {
+      content = <SignUpContainer url={this.props.url + 'users.json'} onSignUp={this.props.setUser} />
+    } else if (this.state.selectedOption === "signIn") {
+      content = <SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.props.setUser}/>
+    } else {
+      content = <MenuOptionsComponent setOption={this.setOption} />
+    }
+    return content
   }
 }
 
