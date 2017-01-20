@@ -38,9 +38,15 @@ class TopTrumpsContainer extends React.Component {
   }
 
   render() {
-    return (this.state.currentUser) ?
+    const content = (this.state.currentUser) ?
       (<div></div>) :
       (<LoginContainer url={this.props.url} setUser={this.setUser}/>)
+      return (
+        <div id="splash" className="fade-in">
+          <h1>TOP TRUMPS</h1>
+          {content}
+        </div>
+      )
   }
 }
 

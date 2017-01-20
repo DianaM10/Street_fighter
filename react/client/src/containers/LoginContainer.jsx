@@ -7,7 +7,8 @@ class LoginContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedOption: null
+      selectedOption: null,
+      options: ["Sign In", "Sign Up"]
     }
     this.setOption = this.setOption.bind(this)
   }
@@ -20,12 +21,12 @@ class LoginContainer extends React.Component {
 
   render() {
     let content
-    if (this.state.selectedOption === "signUp") {
+    if (this.state.selectedOption === "Sign Up") {
       content = <SignUpContainer url={this.props.url + 'users.json'} onSignUp={this.props.setUser} />
-    } else if (this.state.selectedOption === "signIn") {
+    } else if (this.state.selectedOption === "Sign In") {
       content = <SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.props.setUser}/>
     } else {
-      content = <MenuOptionsComponent setOption={this.setOption} />
+      content = <MenuOptionsComponent selectOption={this.setOption} options={this.state.options}/>
     }
     return content
   }

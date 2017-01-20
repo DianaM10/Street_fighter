@@ -1,18 +1,20 @@
 import React from 'react'
 
 const MenuOptionComponent = function(props) {
-  const signIn = function() {
-    props.setOption("signIn")
-  }
 
-  const signUp = function() {
-    props.setOption("signUp")
-  }
+  const buttons = props.options.map(function(option, index) {
+    return (
+      <button key={index} onClick={function() {
+        props.selectOption(option)
+      }}>
+        {option}
+      </button>
+    )
+  })
 
   return(
     <div className="options-menu">
-      <button onClick={signIn}>Sign In</button>
-      <button onClick={signUp}>Sign Up</button>
+      {buttons}
     </div>
   )
 }
