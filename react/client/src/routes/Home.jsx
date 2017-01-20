@@ -1,9 +1,10 @@
 import React from 'react'
+import LoginContainer from '../containers/LoginContainer'
 
 const Home = function() {
   return (
-    <div className="home-route">
-      Home Route
+    <div id="splash">
+      <LoginContainer />
     </div>
   )
 }
