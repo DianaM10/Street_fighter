@@ -1,5 +1,5 @@
 import React from 'react'
-
+import SignInContainer from './SignInContainer'
 
 class LoginContainer extends React.Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class LoginContainer extends React.Component {
   render() {
     return(
       <div id="start-menu">
-      Login Container
+        <SignInContainer url={this.props.url +'users/sign_in.json'} />
       </div>
     )
   }
