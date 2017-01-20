@@ -1,5 +1,6 @@
 import React from 'react'
 import SignInContainer from './SignInContainer'
+import SignUpContainer from './SignUpContainer'
 
 class LoginContainer extends React.Component {
   constructor(props) {
@@ -40,7 +41,10 @@ class LoginContainer extends React.Component {
   render() {
     return (this.state.currentUser) ?
       (<div id="start-menu"></div>) :
-      (<SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.setUser}/>)
+      (<div id="start-menu">
+        <SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.setUser}/>
+        <SignUpContainer url={this.props.url + 'users.json'} onSignUp={this.setUser} />
+      </div>)
   }
 }
 

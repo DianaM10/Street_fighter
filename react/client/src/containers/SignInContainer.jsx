@@ -48,7 +48,7 @@ class SignInContainer extends React.Component {
 
   render() {
     return(
-      <form className="login-form">
+      <form className="log-form">
         <input type="email" onChange={this.handleEmailChange} placeholder="enter email" />
         <input type="password" onChange={this.handlePasswordChange} placeholder="enter password" />
         <button type="submit" onClick={this.signIn}>Sign In</button>
