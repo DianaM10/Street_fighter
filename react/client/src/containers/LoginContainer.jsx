@@ -39,10 +39,8 @@ class LoginContainer extends React.Component {
 
   render() {
     return (this.state.currentUser) ?
-      (<div id="start-menu">Hello</div>) :
-      (<div id="start-menu">
-          <SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.setUser}/>
-        </div>)
+      (<div id="start-menu"></div>) :
+      (<SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.setUser}/>)
   }
 }
 
