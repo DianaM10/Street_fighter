@@ -7,6 +7,7 @@ class LoginContainer extends React.Component {
     this.state = {
       currentUser: null
     }
+    this.setUser = this.setUser.bind(this)
   }
 
   setUser(user) {
@@ -37,11 +38,11 @@ class LoginContainer extends React.Component {
   }
 
   render() {
-    return(
-      <div id="start-menu">
-        <SignInContainer url={this.props.url +'users/sign_in.json'} />
-      </div>
-    )
+    return (this.state.currentUser) ?
+      (<div id="start-menu">Hello</div>) :
+      (<div id="start-menu">
+          <SignInContainer url={this.props.url +'users/sign_in.json'} onSignIn={this.setUser}/>
+        </div>)
   }
 }
 
