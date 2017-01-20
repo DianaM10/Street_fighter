@@ -12,6 +12,7 @@ ComputerPlayer.prototype = {
     this.hand.push(card);
   },
   removeCard: function() {
+    this.selectHighestAbility()
     return this.hand.shift();
   },
   selectHighestAbility: function() {

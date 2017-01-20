@@ -1,8 +1,9 @@
-var Player = require('../top_trumps/player');
-var Deck = require('../top_trumps/deck.js');
+var Player = require('../top_trumps/player')
+var Deck = require('../top_trumps/deck.js')
 var Game = require('../top_trumps/game.js');
 var MapView = require('./map_view.js');
 var FightersView = require('./fighters_view.js');
+var ComputerPlayer = require('../top_trumps/computer_player')
 
 var StartView = function() {
   this.player1 = null;
@@ -48,7 +49,7 @@ StartView.prototype = {
       themeMusic.src = "/audio/fight_button.mp3";
       themeMusic.loop = false;
       this.player1 = new Player(p1.value);
-      this.player2 = new Player(p2.value);
+      this.player2 = new ComputerPlayer();
       this.handSize = cardNumber.value;
       console.log("p1", this.player1);
       console.log("p2", this.player2);
@@ -71,9 +72,8 @@ StartView.prototype = {
 
   createNewGame: function(data) {
     var deck = new Deck(data.fighters);
-    var game = new Game(deck, this.handSize);
+    var game = new Game(deck, this.handSize, this.player2);
     game.addPlayer(this.player1);
-    game.addPlayer(this.player2);
     this.getVenues(game);
   },
 

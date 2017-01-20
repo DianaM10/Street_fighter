@@ -13,4 +13,4 @@ class Deck {
   }
 }
 
-export default Deck
+module.exports = Deck

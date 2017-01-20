@@ -2,19 +2,21 @@ var assert = require("assert");
 var Game = require("../game")
 var Deck = require("../deck").default
 var Player = require('../player').default
+var ComputerPlayer = require('../computer_player')
 
 var game;
 var game2;
 var deck;
 var player1;
-var player2;
+var compPlayer;
+
 
 describe("Game", function() {
   beforeEach(function() {
     var stubDeck = [1, 2, 3, 4, 5, 6];
-    game = new Game(stubDeck, 3);
+    compPlayer = new ComputerPlayer()
+    game = new Game(stubDeck, 3, compPlayer)
     player1 = new Player("Paul");
-    player2 = new Player("Bertie");
     deck = new Deck([{
     id: 5,
     name: "Blanka",
@@ -79,15 +81,12 @@ describe("Game", function() {
                 range: 13,
               }
   }]);
-    game2 = new Game(deck, 1);
+    game2 = new Game(deck, 1, compPlayer);
     game2.addPlayer(player1);
-    game2.addPlayer(player2);
-
-
   });
 
-  it("should start with no players", function() {
-    assert.equal(0, game.playerCount());
+  it("should start with a computer player", function() {
+    assert.equal(1, game.playerCount());
   });
 
   it("should start with a deck", function() {
@@ -97,7 +96,7 @@ describe("Game", function() {
   it("should be able add a player", function() {
     var player1Stub = {name: "Diana", hand: []};
     game.addPlayer(player1Stub);
-    assert.equal(1, game.playerCount());
+    assert.equal(2, game.playerCount());
   });
 
   it("should have a hand size", function() {
@@ -107,16 +106,14 @@ describe("Game", function() {
   it("should be able to deal cards to each player", function() {
     game2.deal();
     assert.equal(1, player1.cardCount());
-    assert.equal(1, player2.cardCount());
+    assert.equal(1, compPlayer.cardCount());
   });
 
   it("should be able to play a round", function() {
     game2.deal();
     game2.playRound("resolve");
-    
-
     assert.equal(2, player1.cardCount());
-    assert.equal(0, player2.cardCount());
+    assert.equal(0, compPlayer.cardCount());
   });
 
   it("should be able to populate and display table", function(){
@@ -129,7 +126,7 @@ describe("Game", function() {
     game2.deal();
     game2.populateTable();
     game2.compareAbility("defense");
-    assert.equal(0, player2.cardCount());
+    assert.equal(0, compPlayer.cardCount());
     assert.equal(2, player1.cardCount());
   });
 
@@ -153,7 +150,7 @@ describe("Game", function() {
     game2.deal();
     game2.populateTable();
     game2.compareAbility("defense");
-    assert.equal(0, player2.cardCount());
+    assert.equal(0, compPlayer.cardCount());
     assert.equal(2, player1.cardCount());
     assert.equal(true, game2.isGameWon);
   });
@@ -162,7 +159,7 @@ describe("Game", function() {
     game2.deal();
     game2.populateTable();
     game2.compareAbility("defense");
-    assert.equal(0, player2.cardCount());
+    assert.equal(0, compPlayer.cardCount());
     assert.equal(2, player1.cardCount());
     assert.equal(true, game2.isGameWon);
     assert.equal("Blanka", game2.winningCard.name);

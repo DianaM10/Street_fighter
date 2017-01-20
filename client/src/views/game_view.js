@@ -139,13 +139,37 @@ buildPlayer: function(player, playerNumber) {
       var button = document.createElement('button');
       listItem.appendChild(button);
       abilitiesList.appendChild(listItem);
-      this.timeOutFirstCardAbilityBuilder(soundEffect, button, ability, fighter.abilities, multiplier);
+      if (currentPlayer === this.game.players[0]) {
+        this.playerCardAbilityBuilder(soundEffect, button, ability, fighter.abilities, multiplier);
+      } else {
+        this.timeOutSecondCardAbilityBuilder(button, ability, fighter.abilities, multiplier)
+      }
       multiplier++;
     }
-
+    if (currentPlayer === this.game.players[1]) {
+      setTimeout(function() {
+        this.cpSelectAbility()
+      }.bind(this),4500)
+    }
   },
 
-  timeOutFirstCardAbilityBuilder: function(soundEffect, button, ability, abilities, multiplier) {
+  cpSelectAbility: function() {
+    var chosenAbility = this.game.players[1].chosenAbility
+    var cardAbilities = document.getElementById('firstcard-abilities')
+    for (ability of cardAbilities.children) {
+      if (ability.firstChild.key === chosenAbility) {
+        ability.firstChild.style.backgroundColor = "black";
+        ability.firstChild.style.color = "#C9A955";
+      }
+    }
+    this.buildSecondCard(chosenAbility);
+    this.game.compareAbility(chosenAbility);
+    var statsObjects = this.makeStatsObjects();
+    this.updateFighterStats(statsObjects);
+    this.displayRoundWinner();
+  },
+
+  playerCardAbilityBuilder: function(soundEffect, button, ability, abilities, multiplier) {
     setTimeout(function() {
       soundEffect.src = "/audio/punch.mp3";
       button.innerText = ability + ": " + abilities[ability];
@@ -170,6 +194,7 @@ buildPlayer: function(player, playerNumber) {
 
     }.bind(this), multiplier * 500)
   },
+
 
   buildSecondCard: function(chosenAbility) {
     var currentPlayer = this.game.currentPlayer;

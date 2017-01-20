@@ -1,7 +1,7 @@
-var Game = function(deck, handSize) {
+var Game = function(deck, handSize, computerPlayer) {
   this.deck = deck;
   this.handSize = handSize;
-  this.players = [];
+  this.players = [computerPlayer];
   this.table = [];
   this.currentPlayer;
   this.isGameWon = false;
@@ -15,7 +15,7 @@ Game.prototype = {
     return this.players.length;
   },
   addPlayer: function(newPlayer) {
-    this.players.push(newPlayer);
+    this.players.unshift(newPlayer);
   },
   shuffleDeck: function() {
     this.deck.shuffleCards();
