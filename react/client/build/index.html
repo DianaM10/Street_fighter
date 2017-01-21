@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Street Fighter Top Trumps</title>
+  <link href="https://fonts.googleapis.com/css?family=Shojumaru" rel="stylesheet">
+  <script src = "https://maps.googleapis.com/maps/api/js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="bundle.js"></script>
+</head>
+<body>
+  <section id="app">
+  </section>
+
+    <!-- <section id="splash" class="fade-in">
+
+    <audio id="music" src="audio/capcom_sound.mp3" autoplay></audio>
+
+    <h1>TOP TRUMPS</h1>
+
+    <div id="start_menu">
+      <button id="new_game" value="New Game">New Game</button>
+      <button id="fighters" value="Fighters">Fighters</button>
+     </div>
+
+     <div id="player_details">
+        <p><label for="player1">Player 1</label>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="player1" class="player_name" placeholder="---" maxlength="3" size="4"></p>
+
+        <p><label for="player2">Player 2</label>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="player2" class="player_name" placeholder="---" maxlength="3" size="4"></p>
+
+        <p><label for="cardNumber">Cards in hand</label>:&nbsp;&nbsp;&nbsp;<input type="number" id="cardNumber" class="player_name" placeholder="-" max="5" min="1" size="3"></p>
+
+        <button id="start_play" value="Start Play">FIGHT!</button>
+
+        <div id="warning"></div>
+      </div>
+
+    </section> -->
+    <!-- /splash -->
+
+
+
+<!--map-view section holds the code for the map and venues choice display
+    map-container is necessary for importing the google map.-->
+
+    <section id="map-view">
+      <section id="map-container"></section>
+    </section>
+
+
+
+<!--game section displays when players have chosen names and pressed start play button-->
+
+    <section id="game">
+
+      <section id="playerDetails">
+
+        <section id="player1Bar"></section>
+        <section id="player2Bar"></section>
+
+      </section>
+
+      <section id="gameBody">
+
+        <audio id="game-music" src="" autoplay></audio>
+
+        <section class="topCard" id="player1Card"></section>
+        <section id="message-display"></section>
+        <section class="topCard" id="player2Card"></section>
+
+      </section><!-- /gameBody -->
+
+    </section><!-- /game-->
+
+
+    <section id="fighter_stats">
+      <button id="return_menu">Back to Menu</button>
+      <button id="return_fighters">Back to Fighters</button>
+      <section id="all_fighters"></section>
+      <section id="fighter_profile">
+        <div id="profile"></div>
+        <div id="stats"></div>
+      </section> 
+    </section>
+
+
+</body>
+</html>
