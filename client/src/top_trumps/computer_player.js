@@ -1,25 +1,27 @@
-var ComputerPlayer = function(){
+class ComputerPlayer {
+  constructor(name) {
   this.name = "CP"
   this.hand =[]
   this.chosenAbility = ""
 }
-
-ComputerPlayer.prototype = {
-  cardCount: function() {
+  cardCount() {
     return this.hand.length;
-  },
-  addCard: function(card) {
+  }
+
+  addCard(card) {
     this.hand.push(card);
-  },
-  removeCard: function() {
+  }
+
+  removeCard() {
     this.selectHighestAbility()
     return this.hand.shift();
-  },
-  selectHighestAbility: function() {
-     var abilities = this.hand[0].abilities
-     var highestAbility = ""
-     var highestValue = 0
-     for (var ability in abilities) {
+  }
+
+  selectHighestAbility() {
+     let abilities = this.hand[0].abilities
+     let highestAbility = ""
+     let highestValue = 0
+     for (let ability in abilities) {
       if (abilities[ability] > highestValue) {
         highestValue = abilities[ability]
         highestAbility = ability
