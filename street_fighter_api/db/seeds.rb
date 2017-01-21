@@ -9,7 +9,7 @@
 User.destroy_all
 
 User.create({
-  email: "bertie@croll",
+  email: "code@clan",
   password: "password1",
   password_confirmation: "password1"
 })
