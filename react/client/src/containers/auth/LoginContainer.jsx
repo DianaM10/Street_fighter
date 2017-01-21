@@ -28,7 +28,12 @@ class LoginContainer extends React.Component {
     } else {
       content = <MenuOptionsComponent selectOption={this.setOption} options={this.state.options}/>
     }
-    return content
+    return (
+      <div id="user-login" className="fade-in">
+        <h1>WELCOME</h1>
+        {content}
+      </div>
+    )
   }
 }
 

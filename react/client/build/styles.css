@@ -6,20 +6,18 @@ https://fabriceleven.com/design/creating-fancy-css3-fade-in-animations-on-page-l
 /*CUSTOM ARCADE FONT*/
 
 @font-face {
-    font-family: CapcomStreetFighter;
-    src: url(/fonts/Capcom_Serif_Large.ttf);
+  font-family: CapcomStreetFighter;
+  src: url(/fonts/Capcom_Serif_Large.ttf);
 }
 
 @font-face {
-    font-family: RydenMK2;
-    src: url(/fonts/Ryden_MK2.ttf);
+  font-family: RydenMK2;
+  src: url(/fonts/Ryden_MK2.ttf);
 }
 
 body {
-     background-color: black;
+  background-color: black;
 }
-
-/*SPLASH STYLES*/
 
 .fade-in {
   opacity: 0;
@@ -28,254 +26,286 @@ body {
   animation-duration: 3s;
 }
 
+/*LOGIN STYLES*/
+
+#user-login {
+  height:100%;
+  padding-top:100px;
+  text-align:center;
+}
+
+#user-login h1 {
+  color: rgba(240,240,240,0.5);
+  text-shadow: 0 0 25px lightblue, 0 0 25px blue, 0 0 25px darkblue;
+  letter-spacing: .2em;
+  font-family: "CapcomStreetFighter", sans-serif;
+  font-size:5em;
+  margin-bottom:50px;
+}
+
+#user-login button,
+#user-login input {
+  width: 250px;
+  margin: auto;
+  margin-top:30px;
+  padding:10px;
+  background-color: black;
+  font-family: "CapcomStreetFighter", sans-serif;
+  color: rgba(240,240,240,0.5);
+  text-shadow: 0 0 25px lightblue, 0 0 25px blue, 0 0 25px darkblue;
+  font-size: 1.5em;
+}
+
+/*SPLASH STYLES*/
+
 #splash {
-     background: black no-repeat center top url("/images/logo-sf.png");
-     color:white;
-     height:100%;
-     padding-top:225px;
-     text-align:center;
+   background: black no-repeat center top url("/images/logo-sf.png");
+   color:white;
+   height:100%;
+   padding-top:225px;
+   text-align:center;
 }
 
 /*#splash header {  }*/
 
 #splash h1 {
 
-     color: #FFC301;
-     font-family: "CapcomStreetFighter", sans-serif;
-     font-size:3.5em;
-     margin-bottom:50px;
+   color: #FFC301;
+   font-family: "CapcomStreetFighter", sans-serif;
+   font-size:3.5em;
+   margin-bottom:50px;
 }
 
 #splash p {
-     color: #FFC301;
-     font-family: "CapcomStreetFighter", sans-serif;
-     font-size:2em;
+   color: #FFC301;
+   font-family: "CapcomStreetFighter", sans-serif;
+   font-size:2em;
 }
 
 #splash input {
-     color:white;
-     border:none;
-     font-size: 2em;
+   color:white;
+   border:none;
+   font-size: 2em;
 }
 
 #splash button {
-     color:red;
-     font-size:3em;
+   color:red;
+   font-size:3em;
 }
 
 #splash input,
 #splash button {
-     width: 250px;
-     margin: auto;
-     margin-top:30px;
-     padding:10px;
-     background-color: black;
-     font-family: "CapcomStreetFighter", sans-serif;
+   width: 250px;
+   margin: auto;
+   margin-top:30px;
+   padding:10px;
+   background-color: black;
+   font-family: "CapcomStreetFighter", sans-serif;
 }
 
 #splash input:focus {
-     outline-color: #FFC301; 
+   outline-color: #FFC301; 
 }
 
 #splash #warning {
-     color: #FFC301;
-     font-family: "CapcomStreetFighter", sans-serif;
-     font-size:1.5em;
+   color: #FFC301;
+   font-family: "CapcomStreetFighter", sans-serif;
+   font-size:1.5em;
 }
 
 .log-form {
-     display: flex;
-     flex-direction: column;
+   display: flex;
+   flex-direction: column;
 }
 
 #player_details {
-     display: none;
+   display: none;
 }
 
 #start-menu {
-     display: flex;
-     flex-direction: row;
-     justify-content: space-around;
-     align-items: stretch;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: stretch;
 }
 
 /* MAP STYLES */
 
 #map-view {
-     border:10px solid #FFC301;
-     margin: 50px auto;
-     width:1000px;
+   border:10px solid #FFC301;
+   margin: 50px auto;
+   width:1000px;
 }
 
 #map-container {
-     height: 600px;
-     width: 1000px;
+   height: 600px;
+   width: 1000px;
 }
 
 
 /* PLAYER BAR STYLES*/
 
 #playerDetails {
-     background: black url('/images/logo-sf.png') center center/250px no-repeat ;
-     box-shadow: 0 8px 10px -6px;
-     color: #FFF11D;
-     height: 112px;
-     text-align: center;
-     z-index: 5;
+   background: black url('/images/logo-sf.png') center center/250px no-repeat ;
+   box-shadow: 0 8px 10px -6px;
+   color: #FFF11D;
+   height: 112px;
+   text-align: center;
+   z-index: 5;
 }
 
 #playerDetails h2 {
-     font-family: "RydenMK2", sans-serif;
-     font-size:1em;
-     margin-top:15px;
-     margin-bottom:0;
+   font-family: "RydenMK2", sans-serif;
+   font-size:1em;
+   margin-top:15px;
+   margin-bottom:0;
 }
 #playerDetails h3 {
-     margin-top:0;
-     margin-bottom:0;
+   margin-top:0;
+   margin-bottom:0;
 }
 
 #player1Bar{
-     margin-left:75px;
+   margin-left:75px;
 }
 #player2Bar{
-     margin-right:75px;
+   margin-right:75px;
 }
 #venue-container{
-     background-color: rgba(255, 255, 255, 0.1);
-     border-radius:25px;
-     color: white;
-     margin-right:30px;
-     margin-bottom:30px;
-     padding: 0 20px 20px 20px;
-     text-align: center;
-     font-family: "CapcomStreetFighter", sans-serif;
-     text-shadow: 2px 2px #444;
+   background-color: rgba(255, 255, 255, 0.1);
+   border-radius:25px;
+   color: white;
+   margin-right:30px;
+   margin-bottom:30px;
+   padding: 0 20px 20px 20px;
+   text-align: center;
+   font-family: "CapcomStreetFighter", sans-serif;
+   text-shadow: 2px 2px #444;
 }
 
 #venue-container h2 {
-     font-size:2.5em;
+   font-size:2.5em;
 }
 
 #venue-container img {
-     border-radius:5px;
-     box-shadow: 3px 3px 10px;
-     height: 200px;
-     width: 350px;
+   border-radius:5px;
+   box-shadow: 3px 3px 10px;
+   height: 200px;
+   width: 350px;
 }
 
 
 /* CARD STYLES */
 .topCard {
-     background-color: white;
-     border:2px #C9A955 solid;
-     border-radius:10px;
-     box-shadow: 3px 3px 10px;
-     font-family: Helvetica, sans-serif;
-     padding-bottom:5px;
-     padding-top:5px;
-     position: relative;
-     visibility: hidden;
-     width:275px;
+   background-color: white;
+   border:2px #C9A955 solid;
+   border-radius:10px;
+   box-shadow: 3px 3px 10px;
+   font-family: Helvetica, sans-serif;
+   padding-bottom:5px;
+   padding-top:5px;
+   position: relative;
+   visibility: hidden;
+   width:275px;
 }
 
 .topCard h1 {
-     font-size: 1.2em;
-     margin-bottom:5px;
-     margin-top: 10px;
-     text-align:center;
+   font-size: 1.2em;
+   margin-bottom:5px;
+   margin-top: 10px;
+   text-align:center;
 }
 
 .topCard button {
-     background-color:#C9A955;
-     border:none;
-     font-size:.85em;
-     font-weight:bold;
-     height:2em;
-     padding:3px;
-     width:100%;
+   background-color:#C9A955;
+   border:none;
+   font-size:.85em;
+   font-weight:bold;
+   height:2em;
+   padding:3px;
+   width:100%;
 }
 
 .topCard button:hover {
-     color:white;
-     text-shadow:1px 1p #fff;
+   color:white;
+   text-shadow:1px 1p #fff;
 }
 
 .topCard button:first-letter {text-transform:capitalize;}
 
 .topCard ul {
-     list-style-type: none;
-     margin-left:0;
-     margin-bottom:5px;
-     margin-top:0;
-     padding-left:0;
+   list-style-type: none;
+   margin-left:0;
+   margin-bottom:5px;
+   margin-top:0;
+   padding-left:0;
 }
 
 .topCard li {
-     font-weight:bold;
-     margin-bottom:1px;
+   font-weight:bold;
+   margin-bottom:1px;
 }
 
 #player1Card {
-     /*margin: 25px 0 0 25px;*/
-     transform: rotate(2deg);
+   /*margin: 25px 0 0 25px;*/
+   transform: rotate(2deg);
 }
 
 #player2Card {
-     /*margin: 25px 25px 0 0;*/
-     transform: rotate(-2deg);
+   /*margin: 25px 25px 0 0;*/
+   transform: rotate(-2deg);
 }
 
 /*cardImage refers to the wee card icons at the top
 that shows how many cards a play has in her hand*/
 .cardImage {
-     border:1px #F6F6F6 solid;
-     border-radius:3px;
-     margin-top: 10px;
+   border:1px #F6F6F6 solid;
+   border-radius:3px;
+   margin-top: 10px;
 }
 
 .bloodImage {
-     display: none;
-     height: 675px;
-     position: absolute;
-     right: 0;
-     top: 0;
-     width: 100%;
-     z-index: 10;
+   display: none;
+   height: 675px;
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: 100%;
+   z-index: 10;
 }
 
 
 /*MESSAGE DISPLAY STYLES*/
 
 #message-display {
-     background-color: rgba(255, 255, 255, 0.1);
-     border-radius:25px;
-     color: #FFF11D;
-     font-family: "RydenMK2", sans-serif;
-     position:relative;
-     text-align:center;
-     text-shadow: 2px 2px #666;
-     width:275px;
+   background-color: rgba(255, 255, 255, 0.1);
+   border-radius:25px;
+   color: #FFF11D;
+   font-family: "RydenMK2", sans-serif;
+   position:relative;
+   text-align:center;
+   text-shadow: 2px 2px #666;
+   width:275px;
 }
 
 #message-display h2 {
-     font-size: 3em;
+   font-size: 3em;
 }
 
 #message-display h3 {
-     font-family: "CapcomStreetFighter", sans-serif;
-     font-size:2em;
-     line-height:1.25em;
+   font-family: "CapcomStreetFighter", sans-serif;
+   font-size:2em;
+   line-height:1.25em;
 }
 
 #changeVenueButton, #rematchButton, #quitButton{
-     background-color: rgba(255, 255, 255, 0.2);
-     border-radius: 5px;
-     color: #FFF11D;
-     font-family:"RydenMK2", sans-serif;
-     font-size:1.25em;
-     margin-bottom:15px;
-     text-shadow: 2px 2px #666;
+   background-color: rgba(255, 255, 255, 0.2);
+   border-radius: 5px;
+   color: #FFF11D;
+   font-family:"RydenMK2", sans-serif;
+   font-size:1.25em;
+   margin-bottom:15px;
+   text-shadow: 2px 2px #666;
 }
 
 #rematchButton{margin-right: 10px;}
@@ -283,68 +313,68 @@ that shows how many cards a play has in her hand*/
 /*FLEX BOX STUFF*/
 
 #game {
-     display: flex;
-     flex-direction: column;
+   display: flex;
+   flex-direction: column;
 }
 
 #gameBody {
-     align-items: center;
-     background: no-repeat center center;
-     display: flex;
-     flex-direction: row;
-     height:550px;
-     justify-content: space-between;
-     padding:20px;
+   align-items: center;
+   background: no-repeat center center;
+   display: flex;
+   flex-direction: row;
+   height:550px;
+   justify-content: space-between;
+   padding:20px;
 }
 
 #startGameButton {
-     background-color: rgba(255, 255, 255, 0.2);
-     color: #FFF11D;
-     font-family:"RydenMK2", sans-serif;
-     font-size: 3em;
-     text-shadow: 2px 2px #666;
+   background-color: rgba(255, 255, 255, 0.2);
+   color: #FFF11D;
+   font-family:"RydenMK2", sans-serif;
+   font-size: 3em;
+   text-shadow: 2px 2px #666;
 }
 
 #playerDetails {
-     display: flex;
-     flex-direction: row;
-     justify-content: space-between;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
 }
 
 /*FIGHTER STYLES*/
 
 #all_fighters {
-     display: flex;
-     flex-direction: row;
-     flex-wrap: wrap;
-     justify-content: center;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
 }
 
 .small_card {
-     transform: scale(0.8);
-     transition: transform 0.5s;
+   transform: scale(0.8);
+   transition: transform 0.5s;
 }
 
 .small_card:hover {
-     transform: scale(0.85);
+   transform: scale(0.85);
 }
 
 #return_menu,
 #return_fighters {
-     color:red;
-     background-color: black;
-     font-family: "CapcomStreetFighter", sans-serif;
-     font-size:1.5em;
-     padding:10px;
-     margin: 30px 0 20px 60px;
+   color:red;
+   background-color: black;
+   font-family: "CapcomStreetFighter", sans-serif;
+   font-size:1.5em;
+   padding:10px;
+   margin: 30px 0 20px 60px;
 }
 
 #fighter_profile {
-     /*display: flex;*/
-     flex-direction: row;
-     background-color: white;
-     justify-content: center;
-     font-family:Helvetica;
+   /*display: flex;*/
+   flex-direction: row;
+   background-color: white;
+   justify-content: center;
+   font-family:Helvetica;
 
 }
 
@@ -352,42 +382,42 @@ that shows how many cards a play has in her hand*/
 #fighter_profile h2 {font-size:1.25em;}
 
 /*#profile, #stats {
-     width: 45%;
+   width: 45%;
 }*/
 
 #profile {
-     margin-top: 30px;
-     /*border:1px red solid;*/
-     width:33%;
+   margin-top: 30px;
+   /*border:1px red solid;*/
+   width:33%;
 }
 
 #personal {
-   background-color: #C9A955;
-   padding:10px;
-   box-shadow: 5px 5px 5px;
-   margin-top:20px;
-   border-radius: 10px;
-   margin-top:50px;
+ background-color: #C9A955;
+ padding:10px;
+ box-shadow: 5px 5px 5px;
+ margin-top:20px;
+ border-radius: 10px;
+ margin-top:50px;
 }
 
 #stats {
-     display:flex;
-     flex-direction:column;
-     margin-top: 80px;
-     /*border:1px green solid;*/
-     width:50%;
-     text-align:center;
+   display:flex;
+   flex-direction:column;
+   margin-top: 80px;
+   /*border:1px green solid;*/
+   width:50%;
+   text-align:center;
 }
 
 #stats h2 {
-     margin-bottom: 50px;
+   margin-bottom: 50px;
 }
 
 #stats h3 {
-     display: inline-block;
-     /*margin-right: 30px;*/
-     text-align: center;
-     margin-bottom:0;
+   display: inline-block;
+   /*margin-right: 30px;*/
+   text-align: center;
+   margin-bottom:0;
 }
 
 
