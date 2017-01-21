@@ -17,7 +17,21 @@ class MenuContainer extends React.Component {
     })
   }
 
+  componentDidMount() {
+    console.log("MenuContainer did mount")
+    var url = "http://localhost:3000/fighters"
+    var request = new XMLHttpRequest()
+    request.open("GET", url)
+    request.onload = () => {
+      if (request.status !== 200) return
+      var data = JSON.parse(request.responseText)
+      this.props.setFighters(data.fighters)
+    }
+    request.send();
+  }
+
   render() {
+    console.log("fighters", this.props.fighters)
     let content
     if (this.state.selectedOption === "View Fighters") {
       content = <h2>Hey {this.props.user.email} Fighters</h2>

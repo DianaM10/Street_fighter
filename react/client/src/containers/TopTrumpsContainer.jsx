@@ -6,14 +6,22 @@ class TopTrumpsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: null
+      currentUser: null,
+      fighters: []
     }
     this.setUser = this.setUser.bind(this)
+    this.setFighters = this.setFighters.bind(this)
   }
 
   setUser(user) {
     this.setState({
       currentUser: user
+    })
+  }
+
+  setFighters(fighters) {
+    this.setState({
+      fighters: fighters
     })
   }
 
@@ -40,7 +48,7 @@ class TopTrumpsContainer extends React.Component {
 
   render() {
     const content = (this.state.currentUser) ?
-      (<MenuContainer user={this.state.currentUser}/>) :
+      (<MenuContainer user={this.state.currentUser} setFighters={this.setFighters} fighters={this.state.fighters}/>) :
       (<LoginContainer url={this.props.url} setUser={this.setUser}/>)
       return (
         <div id="splash" className="fade-in">
