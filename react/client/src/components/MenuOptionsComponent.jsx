@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MenuOptionComponent = function(props) {
+const MenuOptionsComponent = function(props) {
 
   const buttons = props.options.map(function(option, index) {
     return (
@@ -19,4 +19,4 @@ const MenuOptionComponent = function(props) {
   )
 }
 
-export default MenuOptionComponent
+export default MenuOptionsComponent

@@ -1,9 +1,9 @@
 import React from 'react'
-import TopTrumpsContainer from '../containers/TopTrumpsContainer'
+import UIContainer from '../containers/UIContainer'
 
 const Home = function() {
   return (
-    <TopTrumpsContainer url="http://localhost:5000/"/>
+    <UIContainer url="http://localhost:5000/"/>
   )
 }
 

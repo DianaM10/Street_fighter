@@ -1,22 +1,16 @@
 import React from 'react'
-import LoginContainer from './auth/LoginContainer'
-import MenuContainer from './MenuContainer'
+import MenuComponent from '../components/MenuComponent'
 
 class TopTrumpsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: null,
-      fighters: []
+      fighters: [],
+      options: ["Start Game", "View Fighters"],
+      selectedOption: null
     }
-    this.setUser = this.setUser.bind(this)
     this.setFighters = this.setFighters.bind(this)
-  }
-
-  setUser(user) {
-    this.setState({
-      currentUser: user
-    })
+    this.setOption = this.setOption.bind(this)
   }
 
   setFighters(fighters) {
@@ -25,37 +19,34 @@ class TopTrumpsContainer extends React.Component {
     })
   }
 
-  getUser() {
-    const url = this.props.url + 'users.json'
-    const request = new XMLHttpRequest()
-    request.open('GET', url)
-    request.setRequestHeader('Content-Type', 'application/json')
-    request.withCredentials = true
-    request.onload = () => {
-      if(request.status === 200) {
-        const user = JSON.parse(request.responseText)
-        this.setUser(user)
-      } else if (request.status === 401) {
-        this.setUser(null)
-      }
-    }
-    request.send(null)
+  setOption(option) {
+    this.setState({
+      selectedOption: option
+    })
   }
 
   componentDidMount() {
-    this.getUser()
+    var url = "http://localhost:3000/fighters"
+    var request = new XMLHttpRequest()
+    request.open("GET", url)
+    request.onload = () => {
+      if (request.status !== 200) return
+      var data = JSON.parse(request.responseText)
+      this.setFighters(data.fighters)
+    }
+    request.send();
   }
 
   render() {
-    const content = (this.state.currentUser) ?
-      (<MenuContainer user={this.state.currentUser} setFighters={this.setFighters} fighters={this.state.fighters}/>) :
-      (<LoginContainer url={this.props.url} setUser={this.setUser}/>)
-      return (
-        <div id="splash" className="fade-in">
-          <h1>TOP TRUMPS</h1>
-          {content}
-        </div>
-      )
+    let content = null
+    if (this.state.selectedOption === "View Fighters") {
+      content = <h2>Fighters</h2>
+    } else if (this.state.selectedOption === "Start Game") {
+      content = <h2>Game</h2>
+    } else {
+      content = <MenuComponent menuTitle="TOP TRUMPS" selectOption={this.setOption} options={this.state.options}/>
+    }
+    return content
   }
 }
 
