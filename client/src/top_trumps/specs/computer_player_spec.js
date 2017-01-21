@@ -1,43 +1,45 @@
-var ComputerPlayer = require('../computer_player');
-var assert = require('assert');
+import ComputerPlayer from '../computer_player'
+import assert from 'assert'
 
-describe('ComputerPlayer', function() {
+let comp
 
-  var comp;
-
-
-  beforeEach(function() {
-    comp = new ComputerPlayer();
+describe('ComputerPlayer', () => {
+  
+  beforeEach(() => {
+    comp = new ComputerPlayer() 
     
+  })
 
-  });
+  it('should be called CP', () =>{
+    console.log("comp", comp)
+    assert.equal("CP", comp.name)
+  })
 
-  it('should be called CP', function(){
-    assert.equal("CP", comp.name);
-  });
+  it('should start with empty hand', () => {
+    assert.equal(0, comp.cardCount())
+  })
 
-  it('should start with empty hand', function() {
-    assert.equal(0, comp.cardCount());
-  });
+  it('should be able to add card to the hand', () => {
+    let cardStub = {name: "M. Bison"}
+    comp.addCard(cardStub)
+    assert.equal(1, comp.cardCount())
+  })
 
-  it('should be able to add card to the hand', function() {
-    var cardStub = {name: "M. Bison"};
-    comp.addCard(cardStub);
-    assert.equal(1, comp.cardCount());
-  });
+  it('should be able to remove top card on deck', () => {
+    let cardStub1 = {name: "Dhalsim"}
+    let cardStub2 = {name: "M. Bison"}
+    let cardStub3 = {name: "Chun Li"}
+    comp.addCard(cardStub1)
+    comp.addCard(cardStub2)
+    console.log("card count1", comp.cardCount)
 
-  it('should be able to remove top card on deck', function() {
-    var cardStub1 = {name: "Dhalsim"};
-    var cardStub2 = {name: "M. Bison"};
-    var cardStub3 = {name: "Chun Li"};
-    comp.addCard(cardStub1);
-    comp.addCard(cardStub2);
-    comp.addCard(cardStub3);
-    assert.equal( cardStub1, comp.removeCard());
-  });
+    comp.addCard(cardStub3)
+    console.log("card count", comp.cardCount())
+    assert.equal( cardStub1, comp.removeCard())
+  })
 
-  it('should be able to pick highest ability of top card', function() {
-    var cardStub1 = {
+  it('should be able to pick highest ability of top card', () => {
+    let cardStub1 = {
       name: "Dhalsim", 
       abilities: {
           strength: 12,
@@ -48,8 +50,8 @@ describe('ComputerPlayer', function() {
           resolve: 15,
           range: 11
         }
-      };
-    comp.addCard(cardStub1);
+      }
+    comp.addCard(cardStub1)
     comp.selectHighestAbility()
     assert.equal("resolve", comp.chosenAbility)
   })

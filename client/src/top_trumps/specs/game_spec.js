@@ -1,22 +1,22 @@
-var assert = require("assert");
-var Game = require("../game")
-var Deck = require("../deck")
-var Player = require('../player')
-var ComputerPlayer = require('../computer_player')
+import assert from "assert"
+import Game from "../game"
+import Deck from "../deck"
+import Player from '../player'
+import ComputerPlayer from '../computer_player'
 
-var game;
-var game2;
-var deck;
-var player1;
-var compPlayer;
+let game
+let game2
+let deck
+let player1
+let compPlayer
 
 
-describe("Game", function() {
-  beforeEach(function() {
-    var stubDeck = [1, 2, 3, 4, 5, 6];
+describe("Game", () => {
+  beforeEach(() => {
+    let stubDeck = [1, 2, 3, 4, 5, 6]
     compPlayer = new ComputerPlayer()
     game = new Game(stubDeck, 3, compPlayer)
-    player1 = new Player("Paul");
+    player1 = new Player("Paul")
     deck = new Deck([{
     id: 5,
     name: "Blanka",
@@ -80,96 +80,96 @@ describe("Game", function() {
                 resolve: 7,
                 range: 13,
               }
-  }]);
-    game2 = new Game(deck, 1, compPlayer);
-    game2.addPlayer(player1);
-  });
-
-  it("should start with a computer player", function() {
-    assert.equal(1, game.playerCount());
-  });
-
-  it("should start with a deck", function() {
-    assert.equal(true, game.deck.length > 0);
-  });
-
-  it("should be able add a player", function() {
-    var player1Stub = {name: "Diana", hand: []};
-    game.addPlayer(player1Stub);
-    assert.equal(2, game.playerCount());
-  });
-
-  it("should have a hand size", function() {
-    assert.equal(3, game.handSize);
-  });
-
-  it("should be able to deal cards to each player", function() {
-    game2.deal();
-    assert.equal(1, player1.cardCount());
-    assert.equal(1, compPlayer.cardCount());
-  });
-
-  it("should be able to play a round", function() {
-    game2.deal();
-    game2.playRound("resolve");
-    assert.equal(2, player1.cardCount());
-    assert.equal(0, compPlayer.cardCount());
-  });
-
-  it("should be able to populate and display table", function(){
-    game2.deal();
-    game2.populateTable();
-    assert.equal(2, game2.table.length);
-  });
-
-  it("should be able to compare abilities when one is selected", function() {
-    game2.deal();
-    game2.populateTable();
-    game2.compareAbility("defense");
-    assert.equal(0, compPlayer.cardCount());
-    assert.equal(2, player1.cardCount());
-  });
-
-  it("should be able to determine round winner", function() {
-    game2.deal();
-    game2.populateTable();
-    game2.compareAbility("defense");
-    assert.equal(player1, game2.roundWinner());
-
-  });
-
-  it("should be able to determine draw", function() {
-    game2.deal();
-    game2.populateTable();
-    game2.compareAbility("intelligence");
-    assert.equal(0, player1.cardCount());
-    assert.equal(2, game2.table.length);
-  });
-
-  it("should be able to check if game has been won", function() {
-    game2.deal();
-    game2.populateTable();
-    game2.compareAbility("defense");
-    assert.equal(0, compPlayer.cardCount());
-    assert.equal(2, player1.cardCount());
-    assert.equal(true, game2.isGameWon);
-  });
-
-  it("should be able to show winning card", function() {
-    game2.deal();
-    game2.populateTable();
-    game2.compareAbility("defense");
-    assert.equal(0, compPlayer.cardCount());
-    assert.equal(2, player1.cardCount());
-    assert.equal(true, game2.isGameWon);
-    assert.equal("Blanka", game2.winningCard.name);
-  });
-
-  it("should be able to count rounds", function() {
-    game2.deal();
-    game2.populateTable();
-    game2.compareAbility("defense");
-    assert.equal(1, game2.roundCount);
+  }])
+    game2 = new Game(deck, 1, compPlayer)
+    game2.addPlayer(player1)
   })
 
-});
+  it("should start with a computer player", () => {
+    assert.equal(1, game.playerCount())
+  })
+
+  it("should start with a deck", () => {
+    assert.equal(true, game.deck.length > 0)
+  })
+
+  it("should be able add a player", () => {
+    let player1Stub = {name: "Diana", hand: []}
+    game.addPlayer(player1Stub)
+    assert.equal(2, game.playerCount())
+  })
+
+  it("should have a hand size", () => {
+    assert.equal(3, game.handSize)
+  })
+
+  it("should be able to deal cards to each player", () => {
+    game2.deal()
+    assert.equal(1, player1.cardCount())
+    assert.equal(1, compPlayer.cardCount())
+  })
+
+  it("should be able to play a round", () => {
+    game2.deal()
+    game2.playRound("resolve")
+    assert.equal(2, player1.cardCount())
+    assert.equal(0, compPlayer.cardCount())
+  })
+
+  it("should be able to populate and display table", () =>{
+    game2.deal()
+    game2.populateTable()
+    assert.equal(2, game2.table.length)
+  })
+
+  it("should be able to compare abilities when one is selected", () => {
+    game2.deal()
+    game2.populateTable()
+    game2.compareAbility("defense")
+    assert.equal(0, compPlayer.cardCount())
+    assert.equal(2, player1.cardCount())
+  })
+
+  it("should be able to determine round winner", () => {
+    game2.deal()
+    game2.populateTable()
+    game2.compareAbility("defense")
+    assert.equal(player1, game2.roundWinner())
+
+  })
+
+  it("should be able to determine draw", () => {
+    game2.deal()
+    game2.populateTable()
+    game2.compareAbility("intelligence")
+    assert.equal(0, player1.cardCount())
+    assert.equal(2, game2.table.length)
+  })
+
+  it("should be able to check if game has been won", () => {
+    game2.deal()
+    game2.populateTable()
+    game2.compareAbility("defense")
+    assert.equal(0, compPlayer.cardCount())
+    assert.equal(2, player1.cardCount())
+    assert.equal(true, game2.isGameWon)
+  })
+
+  it("should be able to show winning card", () => {
+    game2.deal()
+    game2.populateTable()
+    game2.compareAbility("defense")
+    assert.equal(0, compPlayer.cardCount())
+    assert.equal(2, player1.cardCount())
+    assert.equal(true, game2.isGameWon)
+    assert.equal("Blanka", game2.winningCard.name)
+  })
+
+  it("should be able to count rounds", () => {
+    game2.deal()
+    game2.populateTable()
+    game2.compareAbility("defense")
+    assert.equal(1, game2.roundCount)
+  })
+
+})

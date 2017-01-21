@@ -5,16 +5,16 @@ class ComputerPlayer {
   this.chosenAbility = ""
 }
   cardCount() {
-    return this.hand.length;
+    return this.hand.length
   }
 
   addCard(card) {
-    this.hand.push(card);
+    this.hand.push(card)
   }
 
   removeCard() {
     this.selectHighestAbility()
-    return this.hand.shift();
+    return this.hand.shift()
   }
 
   selectHighestAbility() {
@@ -31,4 +31,4 @@ class ComputerPlayer {
   }
 }
 
-module.exports = ComputerPlayer;
+export default ComputerPlayer

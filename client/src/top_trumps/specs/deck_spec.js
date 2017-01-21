@@ -1,9 +1,9 @@
-import Deck from '../deck.js'
+import Deck from '../deck'
 import assert from 'assert'
 
-describe("Deck", function(cards){
-  it("start with 2 cards", function(){
-      const cards = [
+describe("Deck", (cards) => {
+  it("start with 2 cards", () => {
+       const cards = [
         {name: "fighter1", strength: 15},
         {name: "fighter2", strength: 10}
       ]
