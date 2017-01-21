@@ -13,7 +13,7 @@ const MenuOptionComponent = function(props) {
   })
 
   return(
-    <div className="options-menu">
+    <div className="log-form">
       {buttons}
     </div>
   )

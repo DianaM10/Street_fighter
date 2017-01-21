@@ -1,5 +1,6 @@
 import React from 'react'
-import LoginContainer from './LoginContainer'
+import LoginContainer from './auth/LoginContainer'
+import MenuContainer from './MenuContainer'
 
 class TopTrumpsContainer extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class TopTrumpsContainer extends React.Component {
 
   render() {
     const content = (this.state.currentUser) ?
-      (<div></div>) :
+      (<MenuContainer user={this.state.currentUser}/>) :
       (<LoginContainer url={this.props.url} setUser={this.setUser}/>)
       return (
         <div id="splash" className="fade-in">

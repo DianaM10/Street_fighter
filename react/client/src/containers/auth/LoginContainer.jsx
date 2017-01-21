@@ -1,7 +1,7 @@
 import React from 'react'
 import SignInContainer from './SignInContainer'
 import SignUpContainer from './SignUpContainer'
-import MenuOptionsComponent from '../components/MenuOptionsComponent'
+import MenuOptionsComponent from '../../components/MenuOptionsComponent'
 
 class LoginContainer extends React.Component {
   constructor(props) {
