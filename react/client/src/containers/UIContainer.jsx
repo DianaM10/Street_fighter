@@ -40,8 +40,8 @@ class UIContainer extends React.Component {
 
   render() {
     const content = (this.state.currentUser) ?
-      (<TopTrumpsContainer user={this.state.currentUser}/>) :
-      (<LoginContainer url={this.props.url} setUser={this.setUser}/>)
+      <TopTrumpsContainer user={this.state.currentUser}/> :
+      <LoginContainer url={this.props.url} setUser={this.setUser}/>
       return content
   }
 }

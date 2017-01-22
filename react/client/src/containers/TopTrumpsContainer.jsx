@@ -1,5 +1,6 @@
 import React from 'react'
 import MenuComponent from '../components/MenuComponent'
+import MapContainer from './MapContainer'
 
 class TopTrumpsContainer extends React.Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class TopTrumpsContainer extends React.Component {
     if (this.state.selectedOption === "View Fighters") {
       content = <h2>Fighters</h2>
     } else if (this.state.selectedOption === "Start Game") {
-      content = <h2>Game</h2>
+      content = <MapContainer />
     } else {
       content = <MenuComponent menuTitle="TOP TRUMPS" selectOption={this.setOption} options={this.state.options}/>
     }
