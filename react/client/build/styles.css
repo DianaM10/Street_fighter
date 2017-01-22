@@ -89,13 +89,37 @@ body {
 }
 
 #splash button {
-   color:red;
-   font-size:3em;
+   color: #FFC301;
+   font-size:1.5em;
+   position: relative;
+   border: none;
+}
+
+#splash button:hover {
+  cursor: crosshair;
+}
+
+#splash button::before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;
+  top: .4em;
+  left: 1em;
+  transition:background .6s ease-in;
+}
+
+#splash button:hover::before {
+  color: #FFC301;;
+  width: .6em;
+  height: .6em;
+  background-color: #FFC301;
 }
 
 #splash input,
 #splash button {
-   width: 250px;
+   width: 300px;
    margin: auto;
    margin-top:30px;
    padding:10px;
@@ -103,7 +127,8 @@ body {
    font-family: "CapcomStreetFighter", sans-serif;
 }
 
-#splash input:focus {
+#splash input:focus,
+#splash button:focus {
    outline-color: #FFC301; 
 }
 
