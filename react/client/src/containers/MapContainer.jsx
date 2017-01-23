@@ -1,6 +1,6 @@
 import React from 'react'
 import MapComponent from '../components/MapComponent'
-
+import MarkerComponent from '../components/MarkerComponent'
 
 class MapContainer extends React.Component {
   constructor(props) {
@@ -34,13 +34,16 @@ class MapContainer extends React.Component {
 
   setMap(map) {
     console.log("map is set")
+    
     this.setState({map: map})
   }
 
   render() {
     console.log("map container rendered")
     return (
-      <MapComponent setMap={this.setMap}/>
+      <div>
+      <MapComponent countries={this.state.countries} setMap={this.setMap} map={this.state.map}/>
+      </div>
       )
   }
 }

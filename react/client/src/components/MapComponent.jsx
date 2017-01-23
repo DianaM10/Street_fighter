@@ -21,6 +21,23 @@ class MapComponent extends React.Component {
     this.props.setMap(map)
   }
 
+  componentDidUpdate() {
+    console.log('countries', this.props.countries)
+    const markers = this.props.countries.map((country) => {  
+      const marker = new google.maps.Marker({
+        position: country.countryCoords,
+        map: this.props.map,
+        icon: {
+          url: "/images/country_flags/" + country.flag,
+          scaledSize: new google.maps.Size(50, 30)
+        }
+      })
+    marker.country = country;
+    // this.addMarkerListener(marker, country.countryCoords);
+    })
+
+  }
+
   render() {
     console.log("map Componentß rendered")
     return (
