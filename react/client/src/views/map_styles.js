@@ -1,4 +1,4 @@
-var getStyles = function () {
+const getStyles = () => {
   return [
         {
           "elementType": "geometry",
@@ -280,6 +280,6 @@ var getStyles = function () {
           ]
         }
       ]
-    };
+    }
 
-module.exports = getStyles;
+export default getStyles
