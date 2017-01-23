@@ -1,15 +1,17 @@
 import React from 'react'
-import getStyles from '../views/map_styles'
+import MapComponent from '../components/MapComponent'
+
 
 class MapContainer extends React.Component {
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
     this.state = {
       countries: [],
       selectedVenue: null,
       map: null
     }
     this.setSelectedVenue = this.setSelectedVenue.bind(this)
+    this.setMap = this.setMap.bind(this)
   }
 
   setSelectedVenue(venue) {
@@ -19,25 +21,6 @@ class MapContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.getMap()
-    this.getCountries()
-  }
-
-  getMap() {
-    const map =new google.maps.Map(this.refs.map, {
-      center:{lat: 40, lng: 20},
-      zoom: 2,
-      disableDefaultUI: true,
-      draggable: false,
-      zoomControl: false,
-      scaleControl: false,
-      scrollwheel: false,
-      styles: getStyles()
-    })
-    this.setState({ map: map})
-  }
-
-  getCountries() {
     var url = "http://localhost:3000/venues"
     var request = new XMLHttpRequest()
     request.open("GET", url)
@@ -49,9 +32,15 @@ class MapContainer extends React.Component {
     request.send();
   }
 
+  setMap(map) {
+    console.log("map is set")
+    this.setState({map: map})
+  }
+
   render() {
+    console.log("map container rendered")
     return (
-      <div id="map-container" ref="map">Map</div>
+      <MapComponent setMap={this.setMap}/>
       )
   }
 }
