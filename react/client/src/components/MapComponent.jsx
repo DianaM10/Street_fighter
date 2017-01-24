@@ -4,13 +4,14 @@ import getStyles from '../views/map_styles'
 class MapComponent extends React.Component {
   constructor(props) {
     super(props)
+    this.map = null
   }
 
   componentDidMount() {
     console.log("map is being set or some shit")
-    const map =new google.maps.Map(this.refs.map, {
-      center:{lat: 40, lng: 20},
-      zoom: 2,
+    this.map = new google.maps.Map(this.refs.map, {
+      center: this.props.position,
+      zoom: this.props.zoom,
       disableDefaultUI: true,
       draggable: false,
       zoomControl: false,
@@ -18,30 +19,32 @@ class MapComponent extends React.Component {
       scrollwheel: false,
       styles: getStyles()
     })
-    this.props.setMap(map)
+    this.props.setMap(this.map)
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.position === nextProps.position && this.props.zoom === nextProps.zoom) {
+      return false
+    }
+    return true
   }
 
   componentDidUpdate() {
-    console.log('countries', this.props.countries)
-    const markers = this.props.countries.map((country) => {  
-      const marker = new google.maps.Marker({
-        position: country.countryCoords,
-        map: this.props.map,
-        icon: {
-          url: "/images/country_flags/" + country.flag,
-          scaledSize: new google.maps.Size(50, 30)
-        }
-      })
-    marker.country = country;
-    // this.addMarkerListener(marker, country.countryCoords);
-    })
-
+    console.log("zoom", this.props.zoom)
+    this.map.setZoom(this.props.zoom)
+    this.map.setCenter(this.props.position)
+    
   }
+
+ 
 
   render() {
     console.log("map Componentß rendered")
     return (
-      <div id="map-container" ref="map"></div>
+      <div><img src="/images/logo-sf.png" styles={{width: "300px"}}/>
+      <div id="map-container" ref="map">
+      </div>
+      </div>
       )
   }
 

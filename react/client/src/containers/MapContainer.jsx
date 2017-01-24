@@ -8,10 +8,14 @@ class MapContainer extends React.Component {
     this.state = {
       countries: [],
       selectedVenue: null,
-      map: null
+      map: null,
+      mapPosition:{lat: 40, lng: 20},
+      mapZoom: 2
+
     }
     this.setSelectedVenue = this.setSelectedVenue.bind(this)
     this.setMap = this.setMap.bind(this)
+    this.updateMap = this.updateMap.bind(this)
   }
 
   setSelectedVenue(venue) {
@@ -34,15 +38,21 @@ class MapContainer extends React.Component {
 
   setMap(map) {
     console.log("map is set")
-    
     this.setState({map: map})
+  }
+
+  updateMap(coords, zoom) {
+    this.setState({
+      mapPosition: coords,
+      mapZoom: zoom})
   }
 
   render() {
     console.log("map container rendered")
     return (
       <div>
-      <MapComponent countries={this.state.countries} setMap={this.setMap} map={this.state.map}/>
+      <MapComponent  zoom={this.state.mapZoom} position={this.state.mapPosition} setMap={this.setMap} />
+      <MarkerComponent countries={this.state.countries} map={this.state.map} updateMap={this.updateMap}/>
       </div>
       )
   }
