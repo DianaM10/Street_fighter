@@ -50,7 +50,7 @@ class MapContainer extends React.Component {
     return (
       <div>
       <MapComponent  zoom={this.state.mapZoom} position={this.state.mapPosition} setMap={this.setMap} />
-      <MarkerComponent selectedCountry={this.state.selectedCountry} countries={this.state.countries} map={this.state.map} updateMap={this.updateMap} />
+      <MarkerComponent selectedCountry={this.state.selectedCountry} countries={this.state.countries} map={this.state.map} updateMap={this.updateMap} setVenue={this.props.setVenue}/>
       <MapLogo updateMap={this.updateMap} map={this.state.map}/>
       </div>
       )

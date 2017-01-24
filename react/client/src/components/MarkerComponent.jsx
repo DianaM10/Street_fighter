@@ -43,8 +43,14 @@ class MarkerComponent extends React.Component {
         }
       })
       this.addVenueMouseOverListener(marker, venue)
+      this.addVenueClickListener(marker, venue);
       return marker
-      // this.addVenueClickListener(venueMarker, venue);
+    })
+  }
+
+  addVenueClickListener(marker, venue) {
+    marker.addListener('click', () => {
+      this.props.setVenue(venue)
     })
   }
 
