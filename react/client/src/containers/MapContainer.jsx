@@ -7,11 +7,11 @@ class MapContainer extends React.Component {
     super(props)
     this.state = {
       countries: [],
+      selectedCountry: null,
       selectedVenue: null,
       map: null,
       mapPosition:{lat: 40, lng: 20},
       mapZoom: 2
-
     }
     this.setSelectedVenue = this.setSelectedVenue.bind(this)
     this.setMap = this.setMap.bind(this)
@@ -21,6 +21,12 @@ class MapContainer extends React.Component {
   setSelectedVenue(venue) {
     this.setState({
       selectedVenue: venue
+    })
+  }
+
+  setSelectedCountry(country) {
+    this.setState({
+      selectedCountry: country
     })
   }
 
@@ -41,10 +47,12 @@ class MapContainer extends React.Component {
     this.setState({map: map})
   }
 
-  updateMap(coords, zoom) {
+  updateMap(coords, zoom, country) {
     this.setState({
       mapPosition: coords,
-      mapZoom: zoom})
+      mapZoom: zoom,
+      selectedCountry: country
+    })
   }
 
   render() {
@@ -52,7 +60,7 @@ class MapContainer extends React.Component {
     return (
       <div>
       <MapComponent  zoom={this.state.mapZoom} position={this.state.mapPosition} setMap={this.setMap} />
-      <MarkerComponent countries={this.state.countries} map={this.state.map} updateMap={this.updateMap}/>
+      <MarkerComponent selectedCountry={this.state.selectedCountry} countries={this.state.countries} map={this.state.map} updateMap={this.updateMap}/>
       </div>
       )
   }
