@@ -218,6 +218,9 @@ body {
    text-align: center;
    font-family: "CapcomStreetFighter", sans-serif;
    text-shadow: 2px 2px #444;
+   position: absolute;
+   bottom: 0;
+   right: 0;
 }
 
 #venue-container h2 {

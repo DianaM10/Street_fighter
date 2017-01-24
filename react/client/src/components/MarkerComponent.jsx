@@ -1,17 +1,34 @@
 import React from 'react'
+import VenuePreview from '../components/VenuePreview'
 
 class MarkerComponent extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      selectedVenue: null
+    }
     this.countryMarkers = []
     this.venueMarkers = []
   }
+
+  componentWillUpdate() {
+    for(let marker of this.venueMarkers) {
+      marker.setMap(null)
+    }
+  }
+
   componentDidUpdate() {
     if (this.props.selectedCountry) {
       this.addVenueMarkers()
     } else {
       this.addCountryMarkers()
     }
+  }
+
+  setSelectedVenue(venue) {
+    this.setState({
+      selectedVenue: venue
+    })
   }
 
   addVenueMarkers() {
@@ -25,16 +42,29 @@ class MarkerComponent extends React.Component {
           scaledSize: new google.maps.Size(50, 50)
         }
       })
+      this.addVenueMouseOverListener(marker, venue)
       return marker
       // this.addVenueClickListener(venueMarker, venue);
-      // this.addVenueMouseOverListener(venueMarker, venue);
+    })
+  }
+
+  addVenueMouseOverListener(venueMarker, venue) {
+    venueMarker.addListener('mouseover', () => {
+      console.log("mouseOver")
+      this.addVenueMouseOutListener(venueMarker)
+      this.setSelectedVenue(venue)
+    })
+  }
+
+  addVenueMouseOutListener(venueMarker) {
+    
+    venueMarker.addListener('mouseout', () => {
+      console.log("mouseOut")
+      this.setSelectedVenue(null)
     })
   }
 
   addCountryMarkers() {
-    for(let marker of this.venueMarkers) {
-      marker.setMap(null)
-    }
     console.log("markers are being set")
     this.countryMarkers = this.props.countries.map((country) => {  
       const marker = new google.maps.Marker({
@@ -61,9 +91,13 @@ class MarkerComponent extends React.Component {
     })
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+
+  // }
+
   render() {
-    console.log("marker container rendered")
-    return null
+    console.log("marker container rendered") 
+    return <VenuePreview venue={this.state.selectedVenue} />
   }
 }
 

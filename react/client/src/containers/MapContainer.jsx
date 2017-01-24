@@ -4,32 +4,20 @@ import MarkerComponent from '../components/MarkerComponent'
 import MapLogo from '../components/MapLogo'
 
 
+
+
 class MapContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       countries: [],
       selectedCountry: null,
-      selectedVenue: null,
       map: null,
       mapPosition:{lat: 40, lng: 20},
       mapZoom: 2
     }
-    this.setSelectedVenue = this.setSelectedVenue.bind(this)
     this.setMap = this.setMap.bind(this)
     this.updateMap = this.updateMap.bind(this)
-  }
-
-  setSelectedVenue(venue) {
-    this.setState({
-      selectedVenue: venue
-    })
-  }
-
-  setSelectedCountry(country) {
-    this.setState({
-      selectedCountry: country
-    })
   }
 
   componentDidMount() {
@@ -62,7 +50,7 @@ class MapContainer extends React.Component {
     return (
       <div>
       <MapComponent  zoom={this.state.mapZoom} position={this.state.mapPosition} setMap={this.setMap} />
-      <MarkerComponent selectedCountry={this.state.selectedCountry} countries={this.state.countries} map={this.state.map} updateMap={this.updateMap}/>
+      <MarkerComponent selectedCountry={this.state.selectedCountry} countries={this.state.countries} map={this.state.map} updateMap={this.updateMap} />
       <MapLogo updateMap={this.updateMap} map={this.state.map}/>
       </div>
       )
