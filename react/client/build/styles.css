@@ -166,7 +166,19 @@ body {
    height: 600px;
    width: 1000px;
 }
+ #map-logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+ }
 
+ #map-logo:hover {
+  cursor: pointer;
+ }
+
+ #map-logo img {
+  width: 300px;
+ }
 
 /* PLAYER BAR STYLES*/
 

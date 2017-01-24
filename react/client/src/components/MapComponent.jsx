@@ -41,9 +41,7 @@ class MapComponent extends React.Component {
   render() {
     console.log("map Componentß rendered")
     return (
-      <div><img src="/images/logo-sf.png" styles={{width: "300px"}}/>
       <div id="map-container" ref="map">
-      </div>
       </div>
       )
   }

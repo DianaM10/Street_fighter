@@ -1,6 +1,8 @@
 import React from 'react'
 import MapComponent from '../components/MapComponent'
 import MarkerComponent from '../components/MarkerComponent'
+import MapLogo from '../components/MapLogo'
+
 
 class MapContainer extends React.Component {
   constructor(props) {
@@ -61,6 +63,7 @@ class MapContainer extends React.Component {
       <div>
       <MapComponent  zoom={this.state.mapZoom} position={this.state.mapPosition} setMap={this.setMap} />
       <MarkerComponent selectedCountry={this.state.selectedCountry} countries={this.state.countries} map={this.state.map} updateMap={this.updateMap}/>
+      <MapLogo updateMap={this.updateMap} map={this.state.map}/>
       </div>
       )
   }

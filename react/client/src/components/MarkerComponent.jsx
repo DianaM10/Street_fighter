@@ -4,6 +4,7 @@ class MarkerComponent extends React.Component {
   constructor(props) {
     super(props)
     this.countryMarkers = []
+    this.venueMarkers = []
   }
   componentDidUpdate() {
     if (this.props.selectedCountry) {
@@ -31,6 +32,9 @@ class MarkerComponent extends React.Component {
   }
 
   addCountryMarkers() {
+    for(let marker of this.venueMarkers) {
+      marker.setMap(null)
+    }
     console.log("markers are being set")
     this.countryMarkers = this.props.countries.map((country) => {  
       const marker = new google.maps.Marker({
