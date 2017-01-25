@@ -9,8 +9,8 @@ class GameVenue extends React.Component {
 
   render() {
     return (
-      <section id="venue-container">
-        Game Venue should be here
+      <section id="game-body">
+        <img src={'/images/venues/'+this.props.venue.image} />
       </section>
       )
   }

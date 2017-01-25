@@ -25,7 +25,7 @@ class BoardContainer extends React.Component {
     return (
       <div>
         <PlayerBar />
-        <GameVenue />
+        <GameVenue venue={this.props.venue}/>
         <Card />
         <MessageBox />
       </div>
