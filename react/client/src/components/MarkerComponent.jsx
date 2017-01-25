@@ -11,6 +11,11 @@ class MarkerComponent extends React.Component {
     this.venueMarkers = []
   }
 
+
+  componentDidMount() {
+
+  }
+
   componentWillUpdate() {
     for(let marker of this.venueMarkers) {
       marker.setMap(null)
@@ -42,30 +47,38 @@ class MarkerComponent extends React.Component {
           scaledSize: new google.maps.Size(50, 50)
         }
       })
-      this.addVenueMouseOverListener(marker, venue)
-      this.addVenueClickListener(marker, venue);
+      this.addVenueClickListener(marker, venue)
+      // this.addVenueMouseOverListener(marker, venue)
+      // this.addVenueMouseOutListener(marker, venue)
       return marker
     })
   }
 
   addVenueClickListener(marker, venue) {
-    marker.addListener('click', () => {
+    marker.addListener('click', (event) => {
+      console.log('event is:', event)
+      console.log('this is:', this)
+      console.log('marker is:', marker)
+      console.log('click listener fired')
       this.props.setVenue(venue)
     })
   }
-
-  addVenueMouseOverListener(venueMarker, venue) {
-    venueMarker.addListener('mouseover', () => {
-      console.log("mouseOver")
-      this.addVenueMouseOutListener(venueMarker)
+  addVenueMouseOverListener(marker, venue) {
+    marker.addListener('mouseover', (event) => {
+      console.log('event is:', event)
+      console.log('this is:', this)
+      console.log('marker is:', marker)
+      console.log("mouseOver listener fired")
+      // this.addVenueMouseOutListener(marker, venue)
       this.setSelectedVenue(venue)
     })
   }
-
-  addVenueMouseOutListener(venueMarker) {
-    
-    venueMarker.addListener('mouseout', () => {
-      console.log("mouseOut")
+  addVenueMouseOutListener(marker) {
+    marker.addListener('mouseout', (event) => {
+      console.log('event is:', event)
+      console.log('this is:', this)
+      console.log('marker is:', marker)
+      console.log("mouseOut listener fired")
       this.setSelectedVenue(null)
     })
   }
@@ -103,7 +116,7 @@ class MarkerComponent extends React.Component {
 
   render() {
     console.log("marker container rendered") 
-    return <VenuePreview venue={this.state.selectedVenue} />
+    return <VenuePreview venue={this.state.selectedVenue} setVenue={this.props.setVenue}/>
   }
 }
 

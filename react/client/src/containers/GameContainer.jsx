@@ -11,16 +11,19 @@ class GameContainer extends React.Component {
     }
     this.setVenue = this.setVenue.bind(this)
   }
-
+  
   setVenue(venue) {
-      this.setState = {
+    console.log("GameContainer, setVenue", venue)
+      this.setState({
         selectedVenue: venue
-      }
+      })
+      console.log("GameContainer, setVenue", this.state.selectedVenue)
     }
+    
    
   render() {
     if (this.state.selectedVenue) {
-      return <BoardContainer />
+      return <BoardContainer venue={this.state.selectedVenue} />
     } else {
       return <MapContainer setVenue={this.setVenue}/>
     }

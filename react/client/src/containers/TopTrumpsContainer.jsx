@@ -43,7 +43,7 @@ class TopTrumpsContainer extends React.Component {
     if (this.state.selectedOption === "View Fighters") {
       content = <h2>Fighters</h2>
     } else if (this.state.selectedOption === "Start Game") {
-      content = <GameContainer />
+      content = <GameContainer fighters={this.state.fighters}/>
     } else {
       content = <MenuComponent menuTitle="TOP TRUMPS" selectOption={this.setOption} options={this.state.options}/>
     }
