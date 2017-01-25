@@ -10,6 +10,7 @@ class MessageBox extends React.Component {
   render() {
     return (
       <section id="message-display">
+      <button id="startGameButton">START GAME</button>
         Message Box
       </section>
       )

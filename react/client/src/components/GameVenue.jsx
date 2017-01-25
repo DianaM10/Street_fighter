@@ -10,7 +10,8 @@ class GameVenue extends React.Component {
   render() {
     return (
       <section id="game-body">
-        <img src={'/images/venues/'+this.props.venue.image} />
+        <img src={'/images/venues/'+this.props.venue.image}/>
+
       </section>
       )
   }
