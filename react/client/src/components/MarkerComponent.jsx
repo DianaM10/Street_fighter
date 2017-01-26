@@ -1,86 +1,30 @@
 import React from 'react'
-import VenuePreview from '../components/VenuePreview'
+import VenueMarkerComponent from '../components/VenueMarkerComponent'
 
 class MarkerComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedVenue: null
+      selectedCountry: null
     }
     this.countryMarkers = []
-    this.venueMarkers = []
   }
 
-
-  componentDidMount() {
-
-  }
+  // shouldComponentUpdate() {
+  //   if (this.state.selectedCountry) {
+  //     return false
+  //   }
+  //   return true
+  // }
 
   componentWillUpdate() {
-    for(let marker of this.venueMarkers) {
+    for(let marker of this.countryMarkers) {
       marker.setMap(null)
     }
   }
 
   componentDidUpdate() {
-    if (this.props.selectedCountry) {
-      this.addVenueMarkers()
-    } else {
-      this.addCountryMarkers()
-    }
-  }
-
-  setSelectedVenue(venue) {
-    this.setState({
-      selectedVenue: venue
-    })
-  }
-
-  addVenueMarkers() {
-    const venues = this.props.selectedCountry.venues
-    this.venueMarkers = venues.map((venue) => {
-      const marker = new google.maps.Marker({
-        position: venue.coords,
-        map: this.props.map,
-        icon: {
-          url: "/images/fist_icon.ico",
-          scaledSize: new google.maps.Size(50, 50)
-        }
-      })
-      this.addVenueClickListener(marker, venue)
-      // this.addVenueMouseOverListener(marker, venue)
-      // this.addVenueMouseOutListener(marker, venue)
-      return marker
-    })
-  }
-
-  addVenueClickListener(marker, venue) {
-    marker.addListener('click', (event) => {
-      console.log('event is:', event)
-      console.log('this is:', this)
-      console.log('marker is:', marker)
-      console.log('click listener fired')
-      this.props.setVenue(venue)
-    })
-  }
-  addVenueMouseOverListener(marker, venue) {
-    marker.addListener('mouseover', (event) => {
-      console.log('event is:', event)
-      console.log('this is:', this)
-      console.log('marker is:', marker)
-      console.log("mouseOver listener fired")
-      // this.addVenueMouseOutListener(marker, venue)
-      this.setSelectedVenue(venue)
-    })
-  }
-  addVenueMouseOutListener(marker) {
-    marker.addListener('mouseout', (event) => {
-      console.log('event is:', event)
-      console.log('this is:', this)
-      console.log('marker is:', marker)
-      console.log("mouseOut listener fired")
-      this.setSelectedVenue(null)
-    })
+    this.addCountryMarkers()
   }
 
   addCountryMarkers() {
@@ -106,17 +50,28 @@ class MarkerComponent extends React.Component {
       for(let marker of this.countryMarkers) {
         marker.setMap(null)
       }
+      this.setState({
+        selectedCountry: marker.country
+      })
       this.props.updateMap(countryCoords, 5, marker.country)
     })
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-
-  // }
+  clearMarkers() {
+    for(const marker of this.countryMarkers) {
+      marker.setMap(null)
+    }
+  }
 
   render() {
-    console.log("marker container rendered") 
-    return <VenuePreview venue={this.state.selectedVenue} setVenue={this.props.setVenue}/>
+    console.log("marker render", this.state.selectedCountry)
+    if (this.state.selectedCountry) {
+      this.clearMarkers()
+     return <VenueMarkerComponent country={this.state.selectedCountry} map={this.props.map} setVenue={this.props.setVenue}/> 
+   } else {
+     return null
+   }
+    
   }
 }
 
